@@ -4,11 +4,15 @@
         <meta charset="UTF-8">
         <title>THB App</title>
         <link rel="stylesheet" href="css/thb.css">
+        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     </head>
     <body>
         <div id="app">
             <h3>Werke</h3>
-            <a href="#" v-on:click.prevent="toggleFiltering">Filter</a>
+            <a href="#" v-on:click.prevent="toggleFiltering">
+                <i class="fa fa-times" aria-hidden="true" v-if="filtering"></i>
+                <i class="fa fa-filter" aria-hidden="true" v-else></i>
+            </a>
             <transition name="fade">
                 <form v-if="filtering">
                     <label><input type="text" v-model="filterText"></label>
