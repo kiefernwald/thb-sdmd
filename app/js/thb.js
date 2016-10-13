@@ -16,7 +16,7 @@ var app = new Vue({
         if (this.filtering) {
             var self = this
             return self.works.filter(function (work) {
-                return work.title.indexOf(self.filterText) !== -1
+                return work.title.toLowerCase().indexOf(self.filterText.toLowerCase()) !== -1
             })
         }
 
