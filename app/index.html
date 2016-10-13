@@ -3,10 +3,24 @@
     <head>
         <meta charset="UTF-8">
         <title>THB App</title>
-        <script src="node_modules/vue/dist/vue.js"></script>
-        <script src="js/thb.js"></script>
     </head>
     <body>
-        
+        <div id="app">
+            <h3>Werke</h3>
+            <form>
+                <label>Titel: <input type="text" v-model="filterText"></label>
+            </form>
+            <ul>
+                <li v-for="work in filteredWorks">
+                <a href="#" v-on:click.prevent="selectWork(work)">{{ work.title }}</a>
+                </li>
+            </ul>
+            <div v-if="selectedWork">
+                <h3>{{ selectedWork.title }}</h3>
+                <p>{{ selectedWork.text }}</p>
+            </div>
+        </div>
+        <script src="node_modules/vue/dist/vue.js"></script>
+        <script src="js/thb.js"></script>
     </body>
 </html>
