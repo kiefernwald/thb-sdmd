@@ -4,4 +4,4 @@ Die App zum Kurs.
 
 ### Setup
 
-* `npm install` im Projektordner
+* `npm install` im *app*-Ordner
