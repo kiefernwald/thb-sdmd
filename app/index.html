@@ -3,13 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>THB App</title>
+        <link rel="stylesheet" href="css/thb.css">
     </head>
     <body>
         <div id="app">
             <h3>Werke</h3>
-            <form>
-                <label>Titel: <input type="text" v-model="filterText"></label>
-            </form>
+            <a href="#" v-on:click.prevent="toggleFiltering">Filter</a>
+            <transition name="fade">
+                <form v-if="filtering">
+                    <label><input type="text" v-model="filterText"></label>
+                </form>
+            </transition>
             <ul>
                 <li v-for="work in filteredWorks">
                 <a href="#" v-on:click.prevent="selectWork(work)">{{ work.title }}</a>

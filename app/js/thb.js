@@ -8,17 +8,25 @@ var app = new Vue({
         {title: 'Selbstbildnis mit grauem Filzhut', artist: 'Vincent van Gogh', created: '1887', text: 'Selbstbildnis Van Goghs mit hellem Filzhut, in braunem Überrock'}
     ],
     selectedWork: null,
+    filtering: false,
     filterText: ''
   },
   computed: {
       filteredWorks: function () {
-        var self = this
-        return self.works.filter(function (work) {
-            return work.title.indexOf(self.filterText) !== -1
-        })
+        if (this.filtering) {
+            var self = this
+            return self.works.filter(function (work) {
+                return work.title.indexOf(self.filterText) !== -1
+            })
+        }
+
+        return this.works
       }
   },
   methods: {
+      toggleFiltering: function () {
+        this.filtering = !this.filtering;
+      },
       selectWork: function (work) {
         this.selectedWork = work
       }
