@@ -1,0 +1,19 @@
+{
+  "name": "jsapp",
+  "version": "0.1.0",
+  "description": "JS Application for THB",
+  "main": "index.html",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiefernwald/thb-sdmd.git"
+  },
+  "author": "Thomas Bretzke",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kiefernwald/thb-sdmd/issues"
+  },
+  "homepage": "https://github.com/kiefernwald/thb-sdmd#readme",
+  "dependencies": {
+    "vue": "^2.0.3"
+  }
+}
