@@ -3,29 +3,53 @@
     <head>
         <meta charset="UTF-8">
         <title>THB App</title>
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+        <script src="semantic/dist/semantic.min.js"></script>
         <link rel="stylesheet" href="css/thb.css">
-        <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
     </head>
     <body>
         <div id="app">
-            <h3>Werke</h3>
-            <a href="#" v-on:click.prevent="toggleFiltering">
-                <i class="fa fa-times" aria-hidden="true" v-if="filtering"></i>
-                <i class="fa fa-filter" aria-hidden="true" v-else></i>
-            </a>
-            <transition name="fade">
-                <form v-if="filtering">
-                    <label><input type="text" v-model="filterText"></label>
-                </form>
-            </transition>
-            <ul>
-                <li v-for="work in filteredWorks">
-                <a href="#" v-on:click.prevent="selectWork(work)">{{ work.title }}</a>
-                </li>
-            </ul>
-            <div v-if="selectedWork">
-                <h3>{{ selectedWork.title }}</h3>
-                <p>{{ selectedWork.text }}</p>
+
+            <div class="ui borderless main menu" style="">
+                <div class="ui container">
+                    <div href="#" class="header item">
+                        Museum
+                    </div>
+                    <a href="#" class="ui right floated item" tabindex="0">
+                        <transition name="fade">
+                            <div class="ui left icon input" v-if="filtering">
+                                <input type="text" placeholder="Werke filtern..." v-model="filterText">
+                                <i class="filter icon"></i>
+                            </div>
+                        </transition>
+
+                        <button class="small circular ui icon button" v-on:click.prevent="toggleFiltering">
+                            <i class="icon remove" v-if="filtering"></i>
+                            <i class="icon filter" v-else></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="ui container">
+                <div class="ui tall stacked segment" v-if="selectedWork">
+                    <h3>{{ selectedWork.title }}</h3>
+                    <p>{{ selectedWork.text }}</p>
+                    <button class="ui small icon button" v-on:click.prevent="selectWork(null)"><i class="icon remove"></i> Schließen</button>
+                </div>
+                <div class="ui cards">
+                    <div class="ui card" v-for="work in filteredWorks">
+                        <div class="image">
+                            <img v-on:click.prevent="selectWork(work)" v-bind:src=work.image_url>
+                        </div>
+                        <div class="content">
+                            <a class="header">{{ work.title }}</a>
+                            <div class="meta">
+                                <a>{{ work.artist }}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <script src="node_modules/vue/dist/vue.js"></script>

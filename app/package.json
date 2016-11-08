@@ -15,6 +15,7 @@
   "homepage": "https://github.com/kiefernwald/thb-sdmd#readme",
   "dependencies": {
     "font-awesome": "^4.6.3",
+    "semantic-ui": "^2.2.6",
     "vue": "^2.0.3"
   }
 }
